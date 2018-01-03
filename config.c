@@ -1,13 +1,14 @@
 
 
-1、确定时钟源修改以下配置如：
-	硬件采用外部24.576Mhz时钟，此时钟同时给mcasp模块与dac模块提供时钟。
+1、Determine the clock source Modify the following configuration, such as:（确定时钟源修改以下配置如：）
+	The hardware uses an external 24.576Mhz clock, which clocks both the mcasp module and the dac module.（硬件采用外部24.576Mhz时钟，此时钟同时给mcasp模块与dac模块提供时钟。）
+	
 	ret = snd_soc_dai_set_clkdiv(cpu_dai, MCASP_CLKDIV_BCLK, sysclk/evm_get_bclk(params));
 		if (ret < 0){
 			printk("+++++++++++++++can't set CPU DAI clock divider %d\n",ret);	
 			return ret;
 		}
-	ret = snd_soc_dai_set_sysclk(cpu_dai, MCASP_CLK_HCLK_AHCLK, sysclk, SND_SOC_CLOCK_IN);//设置外部AUXCLK时钟输入到解码模块
+	ret = snd_soc_dai_set_sysclk(cpu_dai, MCASP_CLK_HCLK_AHCLK, sysclk, SND_SOC_CLOCK_IN);//Set the external AUXCLK clock input to the decode module（设置外部AUXCLK时钟输入到解码模块）
 		if (ret < 0){
 			printk("+++++++++++++++can't set CPU DAI clock %d\n",ret);	
 			return ret;
@@ -16,7 +17,7 @@
 	mcasp0_pins: mcasp0_pins {
 		pinctrl-single,pins = <
 		.
-		.//mcasp0 io 配置
+		.//mcasp0 io Configuration （配置）
 		.
 		>
 	};
@@ -35,7 +36,7 @@
 	clk_mcasp0: clk_mcasp0 {
 		#clock-cells = <0>;
 		compatible = "gpio-gate-clock";
-		enable-gpios = <&gpiox x 1>; //有源时钟开启管脚
+		enable-gpios = <&gpiox x 1>; //Active clock on pin有源时钟开启管脚
 	};
 	sound {
 		compatible = "ti,pcm1690-evm-audio";
